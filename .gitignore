@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore all files in the pages/docs directory
+pages/docs/*
+# But do not ignore the directory itself
+!pages/docs/
