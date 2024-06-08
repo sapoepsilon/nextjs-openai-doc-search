@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import ReactMarkdown from 'react-markdown'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -91,7 +92,8 @@ export function SearchDialog() {
             <div className="grid gap-4 py-4 text-slate-700">
               {query && (
                 <div className="flex gap-4">
-                  <span className="bg-slate-100 dark:bg-slate-300 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
+                  <span
+                    className="bg-slate-100 dark:bg-slate-300 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
                     <User width={18} />{' '}
                   </span>
                   <p className="mt-0.5 font-semibold text-slate-700 dark:text-slate-100">{query}</p>
@@ -114,16 +116,17 @@ export function SearchDialog() {
                   </span>
                 </div>
               )}
-
-              {completion && !error ? (
-                <div className="flex items-center gap-4 dark:text-white">
-                  <span className="bg-green-500 p-2 w-8 h-8 rounded-full text-center flex items-center justify-center">
-                    <Wand width={18} className="text-white" />
-                  </span>
-                  <h3 className="font-semibold">Answer:</h3>
-                  {completion}
-                </div>
-              ) : null}
+              {
+                completion && !error ? (
+                  <div className="flex flex-col items-center gap-4 dark:text-white">
+      <span className="bg-green-500 p-2 w-8 h-8 rounded-full text-center flex flex-col‘ items-center justify-center">
+        <Wand width={18} className="text-white" />
+      </span>
+                    <h3 className="font-semibold">Answer:</h3>
+                    <ReactMarkdown>{completion}</ReactMarkdown>
+                  </div>
+                ) : null
+              }
 
               <div className="relative">
                 <Input
